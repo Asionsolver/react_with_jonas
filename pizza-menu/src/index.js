@@ -36,14 +36,14 @@ const pizzaData = [
     ingredients: "Tomato, mozarella, and pepperoni",
     price: 15,
     photoName: "pizzas/salamino.jpg",
-    soldOut: true,
+    soldOut: false,
   },
   {
     name: "Pizza Prosciutto",
     ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
     price: 18,
     photoName: "pizzas/prosciutto.jpg",
-    soldOut: false,
+    soldOut: true,
   },
 ];
 
@@ -68,60 +68,83 @@ function Header() {
   );
 }
 
-// State is basically internal component data that can be updated by the component logic. So by the component itself, while props on the other hand, is data that is coming from the parent component. 
+// State is basically internal component data that can be updated by the component logic. So by the component itself, while props on the other hand, is data that is coming from the parent component.
 
 function Menu() {
+  const pizzas = pizzaData;
+  // const pizzas =[];
+  const numPizzas = pizzas.length;
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach, and ric otta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      />
-      <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mozarella, mushrooms, and onion"
-        photoName="pizzas/funghi.jpg"
-        price={12}
-      />
-     
+
+      {numPizzas > 0 ? (
+        < >
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>We're still working on our menu. Please come back later :)</p>
+      )}
     </main>
   );
 }
 
 function Footer() {
   const hour = new Date().getHours();
-  const openHours = 8;
-  const closeHour = 22;
+  const openHours = 1;
+  const closeHour = 12;
 
   const isOpen = hour >= openHours && hour <= closeHour;
   console.log(isOpen);
 
-  // if(hour >= openHours && hour <= closeHour){
-  //   alert("We're currently open!")
-  // } else {
-  //   alert("We're currently closed!")
-  // }
-  // console.log(hour)
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}. We're currently open!
+      {isOpen ? (
+        <Order closeHour={closeHour} openHours={openHours} />
+      ) : (
+        <p>
+          We're happy to welcome you between {openHours}:00 and {closeHour}:00
+        </p>
+      )}
     </footer>
   );
-  // return React.createElement("footer",null,"We're currently open!")
 }
 
-function Pizza(props) {
-  console.log(props);
+function Order({ closeHour, openHours }) {
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.photoName} />
-      <h3>{props.name}</h3>
-      <p>{props.ingredients}</p>
-      <span>{props.price + 3}</span>
+    <div className="order">
+      <p>
+        We're currently open until {openHours}:00 to {closeHour}:00. Come visit
+        us or order online.
+      </p>
+      <button className="btn">Order Now</button>
     </div>
+  );
+}
+
+function Pizza({ pizzaObj }) {
+  console.log(pizzaObj);
+
+  // if (pizzaObj.soldOut) {
+  //   return null;
+  // }
+  return (
+    <li className={`pizza ${pizzaObj.soldOut ? 'sold-out':''}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.photoName} />
+      <h3>{pizzaObj.name}</h3>
+      <p>{pizzaObj.ingredients}</p>
+      
+      <span>{pizzaObj.soldOut ? "Sold Out" : pizzaObj.price}</span>
+    </li>
   );
 }
 
