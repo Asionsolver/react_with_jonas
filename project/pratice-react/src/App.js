@@ -1,11 +1,12 @@
-import Clock from './components/Clock';
-import './App.css';
+import React from 'react'
+
+import Home from './components/state_lifting/example_2/Home'
 
 export default function App() {
+    
   return (
-    <div className="App">
-      <h1><Clock locale="bn-BD"/></h1>
+    <div>
+      <Home/>
     </div>
-  );
+  )
 }
-
