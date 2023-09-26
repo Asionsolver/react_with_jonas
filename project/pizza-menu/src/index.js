@@ -58,21 +58,16 @@ function App() {
 }
 
 function Header() {
-  // const headerStyle ={color:'red', fontSize: '48px', textTransform: 'uppercase'};
-  const headerStyle = {};
-
   return (
     <header className="header">
-      <h1 style={headerStyle}>First React Pizza Company</h1>
+      <h1>First React Pizza Company</h1>
     </header>
   );
 }
 
-// State is basically internal component data that can be updated by the component logic. So by the component itself, while props on the other hand, is data that is coming from the parent component.
-
 function Menu() {
   const pizzas = pizzaData;
-  // const pizzas =[];
+
   const numPizzas = pizzas.length;
 
   return (
@@ -133,10 +128,6 @@ function Order({ closeHour, openHours }) {
 
 function Pizza({ pizzaObj }) {
   console.log(pizzaObj);
-
-  // if (pizzaObj.soldOut) {
-  //   return null;
-  // }
   return (
     <li className={`pizza ${pizzaObj.soldOut ? 'sold-out':''}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.photoName} />
@@ -148,11 +139,6 @@ function Pizza({ pizzaObj }) {
   );
 }
 
-
-
-
-
-// React v18
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -160,5 +146,3 @@ root.render(
   </React.StrictMode>
 );
 
-// React before v18
-// React.render(<App />,document.getElementById("root"));
