@@ -12,7 +12,20 @@ body {
 }
 
 h1 {
+  position: relative;
   margin-bottom: 12px;
+  font-size: 40px;
+}
+
+h1 span {
+  position: absolute;
+  font-size: 10px;
+  top: 11px;
+  margin-left: 10px;
+  color: #f7f7f7;
+  background-color: #512b81;
+  padding: 5px 5px;
+  border-radius: 2px;
 }
 
 .card {

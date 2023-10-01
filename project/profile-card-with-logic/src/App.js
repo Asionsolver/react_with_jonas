@@ -30,7 +30,7 @@ const data =[
    
   },
   {
-    skill: "Svelte",
+    skill: "Sveltenp",
     level:"beginner",
     color:"#765827",
   },
@@ -59,7 +59,7 @@ function Avatar() {
 function Intro() {
   return (
     <div>
-      <h1>Thomson Kelvin</h1>
+      <h1>Thomson Kelvin <span>pro</span></h1>
       <p>
         Full-Stack web developer and teacher at Udemy. When not coding or
         preparing a couse, ilike to play boasrd games, to cook (and eat), or to
@@ -92,5 +92,9 @@ function Skill({data}) {
       </span>
     </div>
   );
+
 }
+
+
+
 
