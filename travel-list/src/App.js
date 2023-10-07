@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function App() {
   const [items, setItems] = useState([]);
-  
+
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
   }
@@ -27,7 +27,7 @@ export default function App() {
         onDeleteItem={handleAddItem}
         onToggleItems={handleToggleItem}
       />
-      <Stats items = {items}/>
+      <Stats items={items} />
     </div>
   );
 }
@@ -83,10 +83,24 @@ function Form({ onAddItems }) {
 }
 
 function PackingList({ items, onDeleteItem, onToggleItems }) {
+  const [sortBy, setSortBy] = useState("input");
+  let sortedItems;
+  if (sortBy === "input") sortedItems = items;
+
+  if (sortBy === 'description') 
+    sortedItems = items
+      .slice()
+      .sort((a, b) => a.description.localeCompare(b.description));
+
+  if (sortBy === 'packed')
+    sortedItems = items
+      .slice()
+      .sort((a, b) => Number(a.packed) - Number(b.packed));
+
   return (
     <div className="list">
       <ul>
-        {items.map((item) => (
+        {sortedItems.map((item) => (
           <Item
             item={item}
             onDeleteItem={onDeleteItem}
@@ -95,6 +109,14 @@ function PackingList({ items, onDeleteItem, onToggleItems }) {
           />
         ))}
       </ul>
+
+      <div className="action">
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="input">Sort by input order</option>
+          <option value="description">Sort by input description</option>
+          <option value="packed">Sort by input status</option>
+        </select>
+      </div>
     </div>
   );
 }
@@ -115,12 +137,12 @@ function Item({ item, onDeleteItem, onToggleItems }) {
   );
 }
 
-function Stats({items}) {
-  if(!items.length)
-      return(
-        <p className="stats">
-          <em>Start adding some items to your packing list 🚀</em>
-        </p>
+function Stats({ items }) {
+  if (!items.length)
+    return (
+      <p className="stats">
+        <em>Start adding some items to your packing list 🚀</em>
+      </p>
     );
   const numItems = items.length;
   const numPacked = items.filter((item) => item.packed).length;
@@ -128,8 +150,7 @@ function Stats({items}) {
   return (
     <footer className="stats">
       {percentage === 100 ? "You got everything! Ready to go ✈️" :
-      `👜You have ${numItems } items on your list, and you already packed ${numPacked} (${percentage}%)`}
+        `👜You have ${numItems} items on your list, and you already packed ${numPacked} (${percentage}%)`}
     </footer>
   );
 }
- 
