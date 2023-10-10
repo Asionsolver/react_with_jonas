@@ -1,3 +1,4 @@
+```Javascript
 import { useState } from "react";
 
 const tempMovieData = [
@@ -46,10 +47,14 @@ const tempWatchedData = [
     userRating: 9,
   },
 ];
+```
 
+```Javascript
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+```
 
+```Javascript
 function Main() {
   return (
     <main className="main">
@@ -58,7 +63,9 @@ function Main() {
     </main>
   );
 }
+```
 
+```Javascript
 export default function App() {
   return (
     <>
@@ -67,7 +74,9 @@ export default function App() {
     </>
   );
 }
+```
 
+```Javascript
 function NavBar() {
   return (
     <nav className="nav-bar">
@@ -77,7 +86,9 @@ function NavBar() {
     </nav>
   );
 }
+```
 
+```Javascript
 function Logo() {
   return (
     <div className="logo">
@@ -86,7 +97,9 @@ function Logo() {
     </div>
   );
 }
+```
 
+```Javascript
 function MovieSearchBox() {
   const [query, setQuery] = useState("");
   return (
@@ -99,7 +112,9 @@ function MovieSearchBox() {
     />
   );
 }
+```
 
+```Javascript
 function NumResult() {
   return (
     <p className="num-results">
@@ -107,7 +122,9 @@ function NumResult() {
     </p>
   );
 }
+```
 
+```Javascript
 function ListBox() {
   const [isOpen1, setIsOpen1] = useState(true);
 
@@ -124,7 +141,9 @@ function ListBox() {
     </div>
   );
 }
+```
 
+```Javascript
 function MovieList() {
   const [movies, setMovies] = useState(tempMovieData);
 
@@ -136,7 +155,9 @@ function MovieList() {
     </ul>
   );
 }
+```
 
+```Javascript
 function Movie({ movie }) {
   return (
     <li >
@@ -151,12 +172,14 @@ function Movie({ movie }) {
     </li>
   );
 }
+```
 
+```Javascript
 function WatchedBox() {
   const [watched, setWatched] = useState(tempWatchedData);
   const [isOpen2, setIsOpen2] = useState(true);
 
-  
+
 
   return (
     <div className="box">
@@ -176,8 +199,11 @@ function WatchedBox() {
   );
 }
 
+```
+
+```Javascript
 function WatchedSummery({watched}){
-  
+
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
@@ -205,7 +231,9 @@ function WatchedSummery({watched}){
           </div>
   );
 }
+```
 
+```Javascript
 function WatchedMovieList({watched}){
   return(
     <ul className="list">
@@ -215,7 +243,9 @@ function WatchedMovieList({watched}){
           </ul>
   );
 }
+```
 
+```Javascript
 function WatchedMovie({movie}){
   return(
     <li >
@@ -238,3 +268,4 @@ function WatchedMovie({movie}){
   </li>
   );
 }
+```
