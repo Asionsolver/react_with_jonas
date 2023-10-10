@@ -1,3 +1,84 @@
+### What is Prop Drilling?
+
+So basically Prop Drilling means that we need to pass some prop through several nested child components, in order to get data into some deeply nested component.
+
+###### Prop Drilling Example: Props passing: {movies} -> Main -> ListBox -> MovieList
+
+```Javascript
+
+export default function App() {
+    const [movies, setMovies] = useState(tempMovieData);
+  return (
+    <>
+      <NavBar movies={movies}/>
+      <Main movies={movies}/>
+    </>
+  );
+}
+
+function NavBar({movies}) {
+  return (
+    <nav className="nav-bar">
+      <Logo />
+      <MovieSearchBox />
+      <NumResult movies={movies}/>
+    </nav>
+  );
+}
+
+function NumResult({movies}) {
+  return (
+    <p className="num-results">
+      Found <strong>{movies.length}</strong> results
+    </p>
+  );
+}
+
+function Main({movies}) {
+  return (
+    <main className="main">
+      <ListBox movies={movies}/>
+      <WatchedBox />
+    </main>
+  );
+}
+
+function ListBox({movies}) {
+  const [isOpen1, setIsOpen1] = useState(true);
+
+  return (
+    <div className="box">
+      <button
+        className="btn-toggle"
+        onClick={() => setIsOpen1((open) => !open)}
+      >
+        {isOpen1 ? "–" : "+"}
+      </button>
+
+      {isOpen1 && <MovieList movies={movies}/>}
+    </div>
+  );
+}
+
+
+
+function MovieList({movies}) {
+
+
+  return (
+    <ul className="list">
+      {movies?.map((movie) => (
+        <Movie movie={movie} key={movie.imdbID}/>
+      ))}
+    </ul>
+  );
+}
+
+--> And so all these components they didn't actually even need this prop.
+
+```
+
+```Javascript
 import { useState } from "react";
 
 const tempMovieData = [
@@ -50,7 +131,7 @@ const tempWatchedData = [
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
- 
+
 
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
@@ -112,7 +193,7 @@ function NumResult({movies}) {
 
   function ListBox({movies}) {
     const [isOpen1, setIsOpen1] = useState(true);
-  
+
     return (
       <div className="box">
         <button
@@ -121,15 +202,15 @@ function NumResult({movies}) {
         >
           {isOpen1 ? "–" : "+"}
         </button>
-  
+
         {isOpen1 && <MovieList movies={movies}/>}
       </div>
     );
   }
 
   function MovieList({movies}) {
-   
-  
+
+
     return (
       <ul className="list">
         {movies?.map((movie) => (
@@ -158,7 +239,7 @@ function WatchedBox() {
   const [watched, setWatched] = useState(tempWatchedData);
   const [isOpen2, setIsOpen2] = useState(true);
 
-  
+
 
   return (
     <div className="box">
@@ -179,7 +260,7 @@ function WatchedBox() {
 }
 
 function WatchedSummery({watched}){
-  
+
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
@@ -240,3 +321,6 @@ function WatchedMovie({movie}){
   </li>
   );
 }
+
+
+```
