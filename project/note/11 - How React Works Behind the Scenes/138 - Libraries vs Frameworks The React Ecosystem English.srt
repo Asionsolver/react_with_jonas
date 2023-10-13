@@ -1,0 +1,776 @@
+﻿1
+00:00:01,200 --> 00:00:02,070
+‫All right.
+
+2
+00:00:02,070 --> 00:00:05,010
+‫And now to finish off this section
+
+3
+00:00:05,010 --> 00:00:08,760
+‫let's talk about something entirely different.
+
+4
+00:00:08,760 --> 00:00:11,190
+‫So this lecture is not really
+
+5
+00:00:11,190 --> 00:00:13,950
+‫about how React works behind the scenes,
+
+6
+00:00:13,950 --> 00:00:17,010
+‫but more about what React actually is,
+
+7
+00:00:17,010 --> 00:00:19,440
+‫which is a library.
+
+8
+00:00:19,440 --> 00:00:22,590
+‫So for future React developers like you
+
+9
+00:00:22,590 --> 00:00:25,290
+‫it's important to understand what it means
+
+10
+00:00:25,290 --> 00:00:29,850
+‫that React itself is a library and not a framework.
+
+11
+00:00:29,850 --> 00:00:32,610
+‫And so let's now learn about the differences,
+
+12
+00:00:32,610 --> 00:00:35,133
+‫as well as the React ecosystem.
+
+13
+00:00:36,570 --> 00:00:38,160
+‫And to understand the difference
+
+14
+00:00:38,160 --> 00:00:40,680
+‫between a framework and a library,
+
+15
+00:00:40,680 --> 00:00:43,500
+‫let's start with an analogy.
+
+16
+00:00:43,500 --> 00:00:46,800
+‫So imagine that you want to make your own sushi
+
+17
+00:00:46,800 --> 00:00:48,240
+‫for the first time,
+
+18
+00:00:48,240 --> 00:00:52,290
+‫just like I did recently for the first time as well.
+
+19
+00:00:52,290 --> 00:00:56,580
+‫So, you have two choices about how you want to do it.
+
+20
+00:00:56,580 --> 00:00:59,070
+‫The first option is to just buy one
+
+21
+00:00:59,070 --> 00:01:01,470
+‫of those all in one sushi kits,
+
+22
+00:01:01,470 --> 00:01:04,890
+‫which will come with all the ingredients that you need
+
+23
+00:01:04,890 --> 00:01:08,610
+‫and so then you don't have to buy anything separately.
+
+24
+00:01:08,610 --> 00:01:12,000
+‫All you have to do is to assemble these ingredients
+
+25
+00:01:12,000 --> 00:01:14,100
+‫into your sushi.
+
+26
+00:01:14,100 --> 00:01:17,100
+‫However, there is also a downside to this
+
+27
+00:01:17,100 --> 00:01:19,800
+‫because now you are stuck with the ingredients
+
+28
+00:01:19,800 --> 00:01:23,220
+‫that are included in the kit that you bought.
+
+29
+00:01:23,220 --> 00:01:24,510
+‫So if you find out
+
+30
+00:01:24,510 --> 00:01:27,120
+‫that you don't like one of these ingredients,
+
+31
+00:01:27,120 --> 00:01:29,730
+‫then you still have to use it anyway.
+
+32
+00:01:29,730 --> 00:01:32,610
+‫Now, instead of getting an all in one kit,
+
+33
+00:01:32,610 --> 00:01:34,830
+‫you also have to option to buying
+
+34
+00:01:34,830 --> 00:01:37,110
+‫all the ingredients separately.
+
+35
+00:01:37,110 --> 00:01:39,870
+‫And so this will give you complete freedom
+
+36
+00:01:39,870 --> 00:01:42,270
+‫to choose only the best ingredients
+
+37
+00:01:42,270 --> 00:01:44,880
+‫and the ones that you like the most.
+
+38
+00:01:44,880 --> 00:01:45,930
+‫On the other hand,
+
+39
+00:01:45,930 --> 00:01:49,230
+‫all this freedom can give you decision fatigue
+
+40
+00:01:49,230 --> 00:01:51,690
+‫because now for each ingredient
+
+41
+00:01:51,690 --> 00:01:55,200
+‫you need to research which brand is the best option
+
+42
+00:01:55,200 --> 00:01:57,510
+‫and then you also have to go buy each
+
+43
+00:01:57,510 --> 00:01:59,610
+‫of the products separately.
+
+44
+00:01:59,610 --> 00:02:00,960
+‫And even worse,
+
+45
+00:02:00,960 --> 00:02:04,800
+‫if one of your selected brands changes or is no longer sold
+
+46
+00:02:04,800 --> 00:02:08,160
+‫then you need to start the whole process over.
+
+47
+00:02:08,160 --> 00:02:08,993
+‫Now, okay,
+
+48
+00:02:08,993 --> 00:02:11,707
+‫but probably at this point you're wondering,
+
+49
+00:02:11,707 --> 00:02:15,660
+‫"Why is he going on and on about sushi?"
+
+50
+00:02:15,660 --> 00:02:16,920
+‫Well, the reason is
+
+51
+00:02:16,920 --> 00:02:20,700
+‫that this analogy actually translates beautifully
+
+52
+00:02:20,700 --> 00:02:23,850
+‫into the difference between building a web application
+
+53
+00:02:23,850 --> 00:02:27,480
+‫using a framework or using a library.
+
+54
+00:02:27,480 --> 00:02:31,020
+‫So we could actually just replace the images here
+
+55
+00:02:31,020 --> 00:02:33,000
+‫and call it a day.
+
+56
+00:02:33,000 --> 00:02:37,980
+‫So, we could describe Angular, Vue, or Svelte, for example
+
+57
+00:02:37,980 --> 00:02:39,900
+‫as the all-in one kit
+
+58
+00:02:39,900 --> 00:02:43,530
+‫and React as buying separate ingredients.
+
+59
+00:02:43,530 --> 00:02:46,620
+‫And the pros and cons of building a web up
+
+60
+00:02:46,620 --> 00:02:48,510
+‫with each of these approaches
+
+61
+00:02:48,510 --> 00:02:50,820
+‫are basically exactly the same
+
+62
+00:02:50,820 --> 00:02:53,760
+‫as in making sushi at home.
+
+63
+00:02:53,760 --> 00:02:57,720
+‫Okay, but actually, let's now replace these terms
+
+64
+00:02:57,720 --> 00:02:59,760
+‫with their actual definitions
+
+65
+00:02:59,760 --> 00:03:02,250
+‫and actually learn what's the difference
+
+66
+00:03:02,250 --> 00:03:06,120
+‫between a framework and a library.
+
+67
+00:03:06,120 --> 00:03:08,700
+‫So, in the world of JavaScript
+
+68
+00:03:08,700 --> 00:03:11,820
+‫a framework is basically a complete structure
+
+69
+00:03:11,820 --> 00:03:14,460
+‫that includes everything that you need
+
+70
+00:03:14,460 --> 00:03:18,690
+‫in order to build a complete large scale application.
+
+71
+00:03:18,690 --> 00:03:20,070
+‫We can say that frameworks
+
+72
+00:03:20,070 --> 00:03:22,860
+‫like Angular are batteries included
+
+73
+00:03:22,860 --> 00:03:26,550
+‫because they include stuff like routing, styling,
+
+74
+00:03:26,550 --> 00:03:29,340
+‫HTTP requests for management,
+
+75
+00:03:29,340 --> 00:03:32,670
+‫and more all out of the box.
+
+76
+00:03:32,670 --> 00:03:35,340
+‫Now, the downside of this is that you're stuck
+
+77
+00:03:35,340 --> 00:03:38,040
+‫with the framework's tools and conventions
+
+78
+00:03:38,040 --> 00:03:41,580
+‫even if you don't like or agree with them.
+
+79
+00:03:41,580 --> 00:03:44,430
+‫However, that's actually not always bad.
+
+80
+00:03:44,430 --> 00:03:48,780
+‫And so this is not a real downside for some developers.
+
+81
+00:03:48,780 --> 00:03:50,220
+‫Now, on the other hand,
+
+82
+00:03:50,220 --> 00:03:52,500
+‫we have JavaScript libraries,
+
+83
+00:03:52,500 --> 00:03:54,630
+‫which are basically pieces of code
+
+84
+00:03:54,630 --> 00:03:58,320
+‫that developers share for other developers to use.
+
+85
+00:03:58,320 --> 00:04:01,890
+‫And the prime example here is of course, React,
+
+86
+00:04:01,890 --> 00:04:05,340
+‫which is what we call a view library,
+
+87
+00:04:05,340 --> 00:04:09,240
+‫view because all React does is to draw components
+
+88
+00:04:09,240 --> 00:04:11,370
+‫onto a user interface,
+
+89
+00:04:11,370 --> 00:04:14,310
+‫so onto a so-called view.
+
+90
+00:04:14,310 --> 00:04:15,750
+‫Now, if you want to build
+
+91
+00:04:15,750 --> 00:04:18,600
+‫a large scale single page application,
+
+92
+00:04:18,600 --> 00:04:22,680
+‫you will need to include many external third party libraries
+
+93
+00:04:22,680 --> 00:04:27,680
+‫for things like routing, styling, HTTP requests, and so on.
+
+94
+00:04:29,250 --> 00:04:33,960
+‫So all these functionalities are not part of React itself
+
+95
+00:04:33,960 --> 00:04:38,100
+‫unlike what happens with Angular and other frameworks.
+
+96
+00:04:38,100 --> 00:04:40,500
+‫And so this is how this notion
+
+97
+00:04:40,500 --> 00:04:44,130
+‫that React is a library ties into the analogy
+
+98
+00:04:44,130 --> 00:04:47,700
+‫of buying separate ingredients to make sushi.
+
+99
+00:04:47,700 --> 00:04:49,950
+‫Because to build a React app,
+
+100
+00:04:49,950 --> 00:04:53,430
+‫we have to choose all these separate libraries.
+
+101
+00:04:53,430 --> 00:04:55,350
+‫Now, don't get me wrong here.
+
+102
+00:04:55,350 --> 00:04:59,850
+‫We can actually build React apps with just React itself.
+
+103
+00:04:59,850 --> 00:05:02,490
+‫So, without using any libraries,
+
+104
+00:05:02,490 --> 00:05:05,490
+‫but that only makes sense for small apps
+
+105
+00:05:05,490 --> 00:05:08,970
+‫or while we are still learning React.
+
+106
+00:05:08,970 --> 00:05:12,120
+‫Now, being able to choose multiple libraries
+
+107
+00:05:12,120 --> 00:05:14,490
+‫in order to build your application
+
+108
+00:05:14,490 --> 00:05:16,860
+‫offers you incredible freedom
+
+109
+00:05:16,860 --> 00:05:18,750
+‫because you can choose exactly
+
+110
+00:05:18,750 --> 00:05:21,270
+‫the ones that you like the most.
+
+111
+00:05:21,270 --> 00:05:24,900
+‫And also every app will have different requirements.
+
+112
+00:05:24,900 --> 00:05:28,290
+‫And so each app will require a different combination
+
+113
+00:05:28,290 --> 00:05:29,460
+‫of libraries.
+
+114
+00:05:29,460 --> 00:05:30,960
+‫And so including all of them
+
+115
+00:05:30,960 --> 00:05:34,380
+‫in a framework might not even be necessary.
+
+116
+00:05:34,380 --> 00:05:36,390
+‫However, on the other hand,
+
+117
+00:05:36,390 --> 00:05:40,440
+‫the implication of this is that as a React developer,
+
+118
+00:05:40,440 --> 00:05:42,420
+‫you need to be able to find
+
+119
+00:05:42,420 --> 00:05:45,060
+‫and download all the right libraries
+
+120
+00:05:45,060 --> 00:05:47,520
+‫for your specific application.
+
+121
+00:05:47,520 --> 00:05:49,890
+‫And of course, on top of that
+
+122
+00:05:49,890 --> 00:05:53,430
+‫you then need to learn how to use these libraries
+
+123
+00:05:53,430 --> 00:05:57,150
+‫and even stay up to date with them over time.
+
+124
+00:05:57,150 --> 00:06:01,710
+‫But don't worry, it's actually not as bad as it may sound.
+
+125
+00:06:01,710 --> 00:06:04,470
+‫So, if you follow this course until the end
+
+126
+00:06:04,470 --> 00:06:06,720
+‫you will have a very good understanding
+
+127
+00:06:06,720 --> 00:06:10,290
+‫of the most important libraries that we usually include
+
+128
+00:06:10,290 --> 00:06:12,600
+‫into most React projects,
+
+129
+00:06:12,600 --> 00:06:15,990
+‫which leads me actually to the next point,
+
+130
+00:06:15,990 --> 00:06:20,990
+‫which is React's huge third party library ecosystem.
+
+131
+00:06:21,330 --> 00:06:26,070
+‫So, React's huge popularity has led to a really,
+
+132
+00:06:26,070 --> 00:06:30,270
+‫really large ecosystem of libraries that we can include
+
+133
+00:06:30,270 --> 00:06:34,800
+‫in our React projects for different needs like routing
+
+134
+00:06:34,800 --> 00:06:39,180
+‫for single page applications, making http requests,
+
+135
+00:06:39,180 --> 00:06:41,490
+‫managing remote server state,
+
+136
+00:06:41,490 --> 00:06:43,950
+‫managing global application state,
+
+137
+00:06:43,950 --> 00:06:48,000
+‫styling, managing forms, animations and transitions,
+
+138
+00:06:48,000 --> 00:06:52,080
+‫and even entire UI component libraries.
+
+139
+00:06:52,080 --> 00:06:55,650
+‫Now, I will not go over all of them here one by one
+
+140
+00:06:55,650 --> 00:06:58,200
+‫because that just takes too much time
+
+141
+00:06:58,200 --> 00:07:01,980
+‫and you can also just research them if you need.
+
+142
+00:07:01,980 --> 00:07:05,220
+‫So instead, I will show you which ones I consider
+
+143
+00:07:05,220 --> 00:07:07,320
+‫the most important libraries
+
+144
+00:07:07,320 --> 00:07:10,500
+‫and so these are the ones that we will use later
+
+145
+00:07:10,500 --> 00:07:11,580
+‫in the course.
+
+146
+00:07:11,580 --> 00:07:14,670
+‫So things like React Router, React Query,
+
+147
+00:07:14,670 --> 00:07:18,033
+‫Redux, styled components, or Tailwind.
+
+148
+00:07:19,020 --> 00:07:23,430
+‫Now, many React developers actually do feel overwhelmed
+
+149
+00:07:23,430 --> 00:07:26,550
+‫by having to take so many decisions and choosing
+
+150
+00:07:26,550 --> 00:07:29,760
+‫between so many third party libraries.
+
+151
+00:07:29,760 --> 00:07:33,300
+‫And so this fact, among some other reasons,
+
+152
+00:07:33,300 --> 00:07:35,130
+‫has led to the development
+
+153
+00:07:35,130 --> 00:07:38,640
+‫of multiple opinionated React frameworks
+
+154
+00:07:38,640 --> 00:07:42,693
+‫such as Nextjs, Remix or Gatsby.
+
+155
+00:07:44,400 --> 00:07:48,810
+‫So, Nextjs or Remix are React frameworks
+
+156
+00:07:48,810 --> 00:07:53,190
+‫because they are actually built on top of React.
+
+157
+00:07:53,190 --> 00:07:57,180
+‫So they basically extend React's functionality
+
+158
+00:07:57,180 --> 00:08:01,290
+‫and they are opinionated because other developers basically
+
+159
+00:08:01,290 --> 00:08:05,070
+‫included their own opinions into how to handle stuff
+
+160
+00:08:05,070 --> 00:08:07,320
+‫like routing, state management,
+
+161
+00:08:07,320 --> 00:08:10,113
+‫or styling into these frameworks.
+
+162
+00:08:11,010 --> 00:08:13,590
+‫So, where in a traditional React app,
+
+163
+00:08:13,590 --> 00:08:17,490
+‫we have to make decisions about what libraries to include
+
+164
+00:08:17,490 --> 00:08:20,370
+‫in an app built with a React framework.
+
+165
+00:08:20,370 --> 00:08:22,290
+‫Some of these important decisions
+
+166
+00:08:22,290 --> 00:08:26,430
+‫have already been taken away from you, the developer.
+
+167
+00:08:26,430 --> 00:08:30,090
+‫And so this makes project development much easier
+
+168
+00:08:30,090 --> 00:08:31,740
+‫and much faster,
+
+169
+00:08:31,740 --> 00:08:33,000
+‫and it can also lead
+
+170
+00:08:33,000 --> 00:08:36,720
+‫to a better overall developer experience.
+
+171
+00:08:36,720 --> 00:08:40,740
+‫Now, different frameworks specialize in different aspects,
+
+172
+00:08:40,740 --> 00:08:45,740
+‫but all of them offload much of the setup work from you.
+
+173
+00:08:45,990 --> 00:08:49,440
+‫Also, all of them offer many other advantages
+
+174
+00:08:49,440 --> 00:08:51,930
+‫besides just being opinionated,
+
+175
+00:08:51,930 --> 00:08:54,030
+‫such as server side rendering
+
+176
+00:08:54,030 --> 00:08:56,760
+‫or static site generation.
+
+177
+00:08:56,760 --> 00:09:00,510
+‫In fact, we can even describe many of these frameworks
+
+178
+00:09:00,510 --> 00:09:03,510
+‫as full stack React frameworks
+
+179
+00:09:03,510 --> 00:09:06,300
+‫because they include so many features
+
+180
+00:09:06,300 --> 00:09:10,350
+‫that we can actually build full stack apps with them,
+
+181
+00:09:10,350 --> 00:09:13,443
+‫all while using React as the base layer.
+
+182
+00:09:14,370 --> 00:09:15,570
+‫But anyway,
+
+183
+00:09:15,570 --> 00:09:19,290
+‫this is just a brief overview of React frameworks.
+
+184
+00:09:19,290 --> 00:09:21,360
+‫We will learn a lot more about this
+
+185
+00:09:21,360 --> 00:09:23,340
+‫in the last part of the course
+
+186
+00:09:23,340 --> 00:09:26,580
+‫where we will actually build a very large project
+
+187
+00:09:26,580 --> 00:09:27,933
+‫using Nextjs.
+
+188
+00:09:29,190 --> 00:09:33,000
+‫Now, this will not be included in the course at launch time,
+
+189
+00:09:33,000 --> 00:09:35,700
+‫but I will include it at a later point.
+
+190
+00:09:35,700 --> 00:09:38,490
+‫But at this point, I just wanted to let you know
+
+191
+00:09:38,490 --> 00:09:40,500
+‫that these frameworks exist
+
+192
+00:09:40,500 --> 00:09:43,470
+‫because of course we can only learn about them
+
+193
+00:09:43,470 --> 00:09:46,080
+‫once we really master React itself
+
+194
+00:09:46,080 --> 00:09:49,443
+‫and also its most important third party libraries.
+
