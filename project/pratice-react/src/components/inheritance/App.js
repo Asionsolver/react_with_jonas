@@ -1,6 +1,6 @@
-import Text from "./components/inheritance/Text";
-import Emoji from "./components/inheritance/Emoji";
-import Bracket from "./components/inheritance/Bracket";
+import Text from "./Text";
+import Emoji from "./Emoji";
+import Bracket from "./Bracket";
 
 export default function App() {
   return (
