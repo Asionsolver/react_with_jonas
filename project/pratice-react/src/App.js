@@ -34,9 +34,22 @@ import ThemeContext from "./components/ContextAPI/themeContext";
 export default class App extends React.Component {
   state = {
     theme: "light",
+    switchTheme: () => {
+      this.setState(({ theme }) => {
+        if (theme === "dark") {
+          return {
+            theme: "light",
+          };
+        }
+        return {
+          theme: "dark",
+        };
+      });
+    },
   };
+
+  
   render() {
-    const { theme } = this.state;
     return (
       <div>
         <h1>React Context API</h1>
@@ -46,8 +59,8 @@ export default class App extends React.Component {
           )}
         </Counter>
 
-        <ThemeContext.Provider value={{ theme: theme }}>
-          <Section/>
+        <ThemeContext.Provider value={this.state}>
+          <Section />
         </ThemeContext.Provider>
       </div>
     );
