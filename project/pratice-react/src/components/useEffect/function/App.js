@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MyComponentsFunction from "./components/useEffect/function/MyComponentsFunction";
+import MyComponentsFunction from "./MyComponentsFunction";
 
 export default function App() {
   const [show, setShow] = useState(true);
