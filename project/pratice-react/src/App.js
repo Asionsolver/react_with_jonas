@@ -1,34 +1,11 @@
-import { createContext, useReducer } from 'react';
-import './App.css';
-import ComponentB from './components/useReducer/example/example_04/ComponentA';
+import React from 'react'
+import GetPost2 from './components/useReducer/example/example_05/GetPost2'
+// import GetPost from './components/useReducer/example/example_05/GetPost'
 
-export const counterContext = createContext();
-
-const initialState = 0;
-const reducer = (state, action) => {
-  switch (action) {
-    case "increment":
-      return state + 1;
-    case "decrement":
-      return state - 1;
-
-    default:
-      return state;
-  }
-};
-
-
-
-function App() {
-    const [count, dispatch] = useReducer(reducer, initialState)
-    return (
-        <div>
-        <div>Count : {count}</div>
-        <counterContext.Provider value={{countDispatch: dispatch}}>
-        <ComponentB />
-        </counterContext.Provider>
-        </div>
-    );
+export default function App() {
+  return (
+    <div>
+        <GetPost2/>
+    </div>
+  )
 }
- 
-export default App;
