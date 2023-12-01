@@ -1,38 +1,34 @@
-//importing useRef 
-import { useRef } from 'react'; 
+import { createContext, useReducer } from 'react';
+import './App.css';
+import ComponentB from './components/useReducer/example/example_04/ComponentA';
 
-const App = () => { 
+export const counterContext = createContext();
 
-	//creating a ref 
-	const ref = useRef(); 
-	// Styling the element 
-	const handleClick = () => { 
-    // console.log('Rendering')
-		ref.current.style.backgroundColor = 'black'; 
-		ref.current.style.padding = '3rem'; 
-		ref.current.style.color = 'white'; 
-		ref.current.style.width = '150px'; 
-		ref.current.style.height = '150px'; 
-		ref.current.style.margin = '50px'; 
-		ref.current.style.borderRadius = '10px'; 
-	}; 
+const initialState = 0;
+const reducer = (state, action) => {
+  switch (action) {
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state - 1;
 
-	return ( 
-		<div> 
-			<h2>Welcome to GeeksForGeeks</h2> 
-			<button onClick={handleClick}> 
-				Enable dark mode 
-			</button> 
+    default:
+      return state;
+  }
+};
 
-			<br /> 
-			<br /> 
 
-			{/* Passing the ref to the DOM element , 
-				we wish to style */} 
-			<div ref={ref}>Article on styling an element 
-				using useRef hook in React</div> 
-		</div> 
-	); 
-}; 
 
+function App() {
+    const [count, dispatch] = useReducer(reducer, initialState)
+    return (
+        <div>
+        <div>Count : {count}</div>
+        <counterContext.Provider value={{countDispatch: dispatch}}>
+        <ComponentB />
+        </counterContext.Provider>
+        </div>
+    );
+}
+ 
 export default App;
