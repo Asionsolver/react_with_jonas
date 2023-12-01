@@ -1,11 +1,12 @@
-import React from 'react'
-import GetPost2 from './components/useReducer/example/example_05/GetPost2'
-// import GetPost from './components/useReducer/example/example_05/GetPost'
+import React from "react";
+import LayoutComponentTwo from "./components/customHook/example/example_01/LayoutComponentTwo";
+import LayoutComponent from "./components/customHook/example/example_01/LayoutComponent";
 
 export default function App() {
   return (
     <div>
-        <GetPost2/>
+      <LayoutComponent />
+      <LayoutComponentTwo />
     </div>
-  )
+  );
 }
