@@ -1,16 +1,28 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useWindowWidth = (screenSize) => {
   const [onScreenSize, setOnScreenSize] = useState(false);
 
+  const checkScreenSize = useCallback(() => {
+    setOnScreenSize(window.innerWidth < screenSize);
+  }, [screenSize]);
+
+  // First Solution
   useEffect(() => {
-    const checkScreenSize = () => {
-        setOnScreenSize(window.innerWidth < screenSize);
-      };
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
-  }, [screenSize]);
+  }, [checkScreenSize]);
+
+  // Second Solution
+  // useEffect(() => {
+  //   const checkScreenSize = () => {
+  //       setOnScreenSize(window.innerWidth < screenSize);
+  //     };
+  //   checkScreenSize();
+  //   window.addEventListener("resize", checkScreenSize);
+  //   return () => window.removeEventListener("resize", checkScreenSize);
+  // }, [screenSize]);
 
   return onScreenSize;
 };
