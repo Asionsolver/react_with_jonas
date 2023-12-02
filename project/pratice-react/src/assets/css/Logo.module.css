@@ -1,0 +1,36 @@
+.logo {
+  width: 300px;
+  position: relative;
+  margin: 2rem;
+}
+
+.glasses {
+  width: 207px;
+  position: absolute;
+  left: 17%;
+  bottom: 33%;
+}
+
+.coloredLine {
+  fill: #52d794;
+}
+
+.play {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-evenly;
+}
+
+.hair {
+  fill: rgb(0, 183, 255);
+}
+
+button {
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #52d794;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  color: white;
+}

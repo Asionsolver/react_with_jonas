@@ -1,12 +1,13 @@
 import React from "react";
-import LayoutComponentTwo from "./components/customHook/example/example_01/LayoutComponentTwo";
-import LayoutComponent from "./components/customHook/example/example_01/LayoutComponent";
+import Logo from "./components/StyleComponents/Logo";
+import './assets/css/global.css'
+
 
 export default function App() {
   return (
-    <div>
-      <LayoutComponent />
-      <LayoutComponentTwo />
+    <div className="App">
+    <h1>Styling React Components - Stylesheets Inline Style & CSS Modules</h1>
+     <Logo/>
     </div>
   );
 }
