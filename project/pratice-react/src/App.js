@@ -1,13 +1,15 @@
 import React from "react";
-import Logo from "./components/StyleComponents/Logo";
-import './assets/css/global.css'
+import GlobalStyle from "./components/ReactStyling/styles/Global.styles";
 
+import Tutorials from "./components/ReactStyling/Tutorials";
+
+// import './assets/css_02/light.css';
 
 export default function App() {
   return (
-    <div className="App">
-    <h1>Styling React Components - Stylesheets Inline Style & CSS Modules</h1>
-     <Logo/>
-    </div>
+    <>
+      <GlobalStyle/>
+      <Tutorials/>
+    </>
   );
 }
